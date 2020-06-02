@@ -11,6 +11,7 @@ from PIL import Image
 
 
 
+#Try to integrate with PIL to return an PIL Image
 def screenShot1():
     # full screenshot
     window = Gdk.get_default_root_window()
@@ -32,6 +33,7 @@ def screenShot1():
     # pb.savev("active.png", "png", (), ())
 
 
+#Works with PIL, but too slow
 def screenShot2():
     dsp = display.Display()
     root = dsp.screen().root
@@ -43,4 +45,16 @@ def screenShot2():
     # image.show()
     # image.save("teste.png")
     return image
-screenShot2()
+
+def performanceTest():
+    import time
+    counter=10
+    while counter:
+        print(time.perf_counter(), counter)
+        screenShot2()
+        counter -=1
+
+
+
+# screenShot2()
+performanceTest()
